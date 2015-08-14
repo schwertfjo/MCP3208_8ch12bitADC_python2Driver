@@ -16,7 +16,7 @@ class MCP3208:
 
     def open(self):
         self.spi.open(self.bus, self.device)
-    
+
     def read(self):
         if self.channel > 7 or self.channel < 0:
             return -1
@@ -26,14 +26,13 @@ class MCP3208:
 
     def __exit__(self, type, value, traceback):
             self.close()
-            
+
     def close(self):
         self.spi.close()
 
 #test
 if __name__ == "__main__":
-    while True    
+    while True:
         with MCP3208(bus = 0, device = 0, channel = 0) as ch0:
             print ch0.read()
         time.sleep(1)
-
